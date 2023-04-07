@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/0615dc2069.js" crossorigin="anonymous"></script>
+    <!-- Logo image display in the title bar -->
+    <link rel="icon" href="logo1.png" type="image/icon type">
+    <title>Grocery List</title>
+</head>
+<body>
+  <!-- title and logo -->
+  <div id="title_logo">
+    <img id="logo" src="logo1.png" alt="logo">
+    <h1 id="title">GoGrocery</h1>
+  </div>
+
+    <!-- add items -->
+    <div class="addItems-container">
+        <h2 class="addItems-title">Add Grocery Items</h2>
+        <form action="">
+          <label for="item-input">Item</label>
+          <input type="text" name="" id="item-input" class="addItems-input">
+          <label for="quantity-input">Quantity</label>
+          <input type="number" name="" id="quantity-input" class="addItems-input">
+          <button type="submit" class="addItems-submit">Add item</button>
+          <h4 class="addItems-action">display action</h4>
+        </form>
+    </div>
+    <!-- display items-->
+    <div class="displayItems-container">
+        <h4 class="displayItems-action">display action</h4>
+        <h2 class="displayItems-title">grocery items</h2>
+        <div  class="grocery-list">
+
+          <!-- dinammicaly created div -->
+            <!--grocery item-->
+            <!-- <div class="grocery-item">
+                <h4 class="grocery-item__title">item</h4>
+                <a href="#" class="grocery-item__link">
+                    <i class="far fa-trash-alt"></i>
+                </a> -->
+            </div>
+            <!-- end grocery item -->
+            <button type="submit" class="displayItems-clear">clear items</button>
+        </div>
+        
+    </div>
+    <button id="kiosk" onclick="toggleKiosk();">Enter Kiosk</button>
+    <script src="grocery.js"></script>
+</body>
+</html>
