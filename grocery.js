@@ -6,6 +6,7 @@ const input = document.querySelector('.addItems-input');
 const itemName = document.getElementById('item-input');
 const itemQuantity = document.getElementById('quantity-input');
 const submit = document.querySelector('.addItems-submit');
+const exportFiles = document.querySelector(".exportItemsList");
 
 //Display items container
 const list = document.querySelector('.grocery-list');
@@ -22,6 +23,9 @@ clear.addEventListener('click', removeItems);
 //Listen to list to delete individual items
 list.addEventListener('click', removeSingleItem);
 
+exportFiles.addEventListener("click", exportList);
+
+let groceryList = []; //array to receive list of items added to the list
 
 //add an item
 function addItem(event){
@@ -36,6 +40,8 @@ function addItem(event){
         showAction(addItemsAction, `${item_name} added to the list`, true);
         createItem(item_name, quantity);
         updateStorage(item_name, quantity);
+
+        groceryList.push({ item_name, quantity });
     }
 }
 
@@ -72,6 +78,23 @@ function createItem(item_name, quantity){
     </a>`
 
     list.appendChild(parent);
+}
+
+//Download list
+let data = "";
+
+function exportList() {
+  groceryList.forEach((item) => {
+    data += `Item Description: ${item.item_name} - Quantity: ${item.quantity}\n`;
+  });
+  let fileName = "grocery-list.txt";
+  let contentType = "text/plain";
+  let a = document.createElement("a");
+  let file = new Blob([data], { type: contentType });
+  a.href = URL.createObjectURL(file);
+  a.download = fileName;
+  removeItems();
+  a.click();
 }
 
 //update local storage

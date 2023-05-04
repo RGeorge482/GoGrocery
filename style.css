@@ -95,7 +95,7 @@ grid-template-columns: 25px auto;
 
 .displayItems-container{
   background-image: linear-gradient(to left, rgba(255, 0, 0, 0.233), rgba(252, 116, 116, 0.986));
-  max-height: 20rem;
+  max-height: 15rem;
   overflow: auto;
 }
 

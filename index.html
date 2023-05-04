@@ -44,11 +44,14 @@
                 </a> -->
             </div>
             <!-- end grocery item -->
-            <button type="submit" class="displayItems-clear">clear items</button>
+            
         </div>
-        
+        <div class="displayItems-container">
+          <button type="submit" class="displayItems-clear">clear items</button>
+          <button type="export" class="displayItems-clear exportItemsList">download list</button>
+          <button id="kiosk" onclick="toggleKiosk()" class="displayItems-clear">enter kiosk</button>
+        </div>
     </div>
-    <button id="kiosk" onclick="toggleKiosk();">Enter Kiosk</button>
     <script src="grocery.js"></script>
 </body>
 </html>
