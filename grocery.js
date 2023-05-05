@@ -168,3 +168,42 @@ function editStorage(item) {
   //add new updated/edited list
   localStorage.setItem("groceryList", JSON.stringify(groceryItems));
 }
+
+// drag and drop
+function stopDefaultEvent(event) {
+  event.preventDefault();
+  return false;
+}
+
+
+window.ondragover = stopDefaultEvent;
+window.ondrop = stopDefaultEvent;
+
+
+function displayImageInIconSet(filePath) {
+  var images = window.document.querySelectorAll("#icons img");
+  for (var i = 0; i < images.length; i++) {
+    images[i].src = filePath;
+  }
+}
+
+function displayIconsSet() {
+  var iconsArea = window.document.querySelector("#icons");
+  iconsArea.style.display = "block";
+}
+
+function interceptDroppedFile() {
+  var interceptArea = window.document.querySelector("#load-icon-holder");
+  interceptArea.ondrop = function (event) {
+    event.preventDefault();
+    interceptArea.style.display = "none";
+    displayIconsSet();
+    var file = event.dataTransfer.files[0];
+    displayImageInIconSet(file.path);
+    return false;
+  };
+}
+
+window.onload = function () { 
+  interceptDroppedFile();
+};
