@@ -1,13 +1,12 @@
+"use strict";
 //Selection items from the DOM
-
 //Add items container
 const addItemsAction = document.querySelector(".addItems-action");
 const input = document.querySelector(".addItems-input");
 const itemName = document.getElementById("item-input");
 const itemQuantity = document.getElementById("quantity-input");
 const submit = document.querySelector(".addItems-submit");
-const exportFiles = document.querySelector(".exportItemsList");
-
+const exportFiles = document.getElementById("export-items");
 //Display items container
 const list = document.querySelector(".grocery-list");
 const displayItemsAction = document.querySelector(".displayItems-action");
@@ -22,7 +21,7 @@ document.addEventListener("DOMContentLoaded", displayStorage);
 clear.addEventListener("click", removeItems);
 //Listen to list to delete individual items
 list.addEventListener("click", removeSingleItem);
-
+//Download current list and clear it out of the system.
 exportFiles.addEventListener("click", exportList);
 //add an item
 let groceryList = []; //array to receive list of items added to the list
@@ -93,6 +92,7 @@ function exportList() {
   a.href = URL.createObjectURL(file);
   a.download = fileName;
   removeItems();
+  data = "";
   a.click();
 }
 
