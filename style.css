@@ -8,10 +8,10 @@ body{
   display: grid;
   grid-template-columns: 80%;
   justify-content: center;
-  background: #828489;
-  background-image: url("picture.png");
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: #c3c4c7;
+  /* background-image: url("picture.png"); */
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
 }
 
 #title_logo{
@@ -95,7 +95,7 @@ grid-template-columns: 25px auto;
 
 .displayItems-container{
   background-image: linear-gradient(to left, rgba(255, 0, 0, 0.233), rgba(252, 116, 116, 0.986));
-  max-height: 20rem;
+  max-height: 14rem;
   overflow: auto;
 }
 

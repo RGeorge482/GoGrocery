@@ -11,6 +11,7 @@
     <title>Grocery List</title>
 </head>
 <body>
+  <div id="load-icon-holder">
   <!-- title and logo -->
   <div id="title_logo">
     <img id="logo" src="logo1.png" alt="logo">
@@ -18,7 +19,7 @@
   </div>
 
     <!-- add items -->
-    <div class="addItems-container">
+  <div class="addItems-container">
         <h2 class="addItems-title">Add Grocery Items</h2>
         <form action="">
           <label for="item-input">Item</label>
@@ -45,9 +46,13 @@
             </div>
             <!-- end grocery item -->
             <button type="submit" class="displayItems-clear">clear items</button>
-            <button type="export" class="displayItems-clear" id="export-items">Download List</button>
+            <button type="export" class="displayItems-clear">Download List</button>
         </div>
-        
     </div>
+    <div class="icon-holder">
+      <label>32x32</label>
+      <img class="icon thirtytwo" />
+    </div>
+    <button id="kiosk" onclick="toggleKiosk();">Enter Kiosk</button>
     <script src="grocery.js"></script>
 </html>

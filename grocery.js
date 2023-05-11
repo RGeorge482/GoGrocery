@@ -1,12 +1,14 @@
 "use strict";
 //Selection items from the DOM
 //Add items container
+
 const addItemsAction = document.querySelector(".addItems-action");
 const input = document.querySelector(".addItems-input");
 const itemName = document.getElementById("item-input");
 const itemQuantity = document.getElementById("quantity-input");
 const submit = document.querySelector(".addItems-submit");
-const exportFiles = document.getElementById("export-items");
+const exportFiles = document.querySelector(".exportItemsList");
+
 //Display items container
 const list = document.querySelector(".grocery-list");
 const displayItemsAction = document.querySelector(".displayItems-action");
@@ -21,11 +23,14 @@ document.addEventListener("DOMContentLoaded", displayStorage);
 clear.addEventListener("click", removeItems);
 //Listen to list to delete individual items
 list.addEventListener("click", removeSingleItem);
-//Download current list and clear it out of the system.
+
 exportFiles.addEventListener("click", exportList);
-//add an item
+
 let groceryList = []; //array to receive list of items added to the list
 
+exportFiles.addEventListener("click", exportList);
+
+//add an item
 function addItem(event) {
   event.preventDefault();
   //let value = input.value;
@@ -41,6 +46,7 @@ function addItem(event) {
 
     groceryList.push({ item_name, quantity });
   }
+
 }
 
 // display message that item was or not add it succesfully
@@ -161,3 +167,42 @@ function editStorage(item) {
   //add new updated/edited list
   localStorage.setItem("groceryList", JSON.stringify(groceryItems));
 }
+
+// drag and drop
+function stopDefaultEvent(event) {
+  event.preventDefault();
+  return false;
+}
+
+
+window.ondragover = stopDefaultEvent;
+window.ondrop = stopDefaultEvent;
+
+
+function displayImageInIconSet(filePath) {
+  var images = window.document.querySelectorAll("#icons img");
+  for (var i = 0; i < images.length; i++) {
+    images[i].src = filePath;
+  }
+}
+
+function displayIconsSet() {
+  var iconsArea = window.document.querySelector("#icons");
+  iconsArea.style.display = "block";
+}
+
+function interceptDroppedFile() {
+  var interceptArea = window.document.querySelector("#load-icon-holder");
+  interceptArea.ondrop = function (event) {
+    event.preventDefault();
+    interceptArea.style.display = "none";
+    displayIconsSet();
+    var file = event.dataTransfer.files[0];
+    displayImageInIconSet(file.path);
+    return false;
+  };
+}
+
+window.onload = function () { 
+  interceptDroppedFile();
+};
