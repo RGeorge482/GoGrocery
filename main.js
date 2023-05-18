@@ -1,4 +1,5 @@
 "use strict";
+
 const { app, BrowserWindow, Menu, ipcMain, dialog } = require("electron"); //create three constants, which are all imported from electron module
 const path = require("path"); //allows to work with directory and files
 const url = require("url"); //allows to work with url
@@ -23,21 +24,6 @@ function createWindow() {
   // Frameless application(body on CSS app need to be deleted in order to work)
   // mainWindow = new BrowserWindow({frame: false});
   // mainWindow = new BrowserWindow({transparent: true});
-
-  // electron Kiosk application mode
-  // mainWindow = new BrowserWindow({ kiosk: true });
-  // const remote = require("electron").remote;
-  // function toggleKiosk() {
-  //   const button = document.getElementById("kiosk");
-  //   const win = remote.getCurrentWindow();
-  //   if (win.isKiosk()) {
-  //     win.setKiosk(false);
-  //     button.innerText = "Enter kiosk mode";
-  //   } else {
-  //     win.setKiosk(true);
-  //     button.innerText = "Exit kiosk mode";
-  //   }
-  // }
 
   mainWindow.loadURL(
     url.format({
