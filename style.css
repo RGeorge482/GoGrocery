@@ -8,14 +8,14 @@ body{
   display: grid;
   grid-template-columns: 80%;
   justify-content: center;
-  background: #c3c4c7;
+  /* background: #c3c4c7; */
+  background-image: linear-gradient(to bottom right, rgb(224, 224, 224), rgb(139, 139, 137));
   /* background-image: url("picture.png"); */
   /* background-repeat: no-repeat; */
   /* background-size: cover; */
 }
 
 #title_logo{
-color: white;
 text-align: center;
 display:grid;
 grid-template-columns: 25px auto;
@@ -174,4 +174,50 @@ grid-template-columns: 25px auto;
   body{
       grid-template-columns: 50%;
   }
+}
+
+#load-icon-holder {
+  padding-top: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+.dragAndDrop {
+  width: 100%;
+  padding-top: 10px;
+}
+
+
+ /* Center the video and give it a border  */
+#video {
+  /* display: block;
+  margin: 0 auto; */
+  width: 50%;
+  border: 5px solid #333;
+}
+
+/* Style the "Take Picture" and "Save Picture" buttons */
+/* #take-picture,
+#save-picture {
+  background-color: #b092e0;
+  border: none;
+  border-radius: 5px;
+  color: #0c0c0c;
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: 10px;
+  padding: 10px;
+  text-align: center;
+  width: 200px;
+  transition: background-color 0.2s ease-in-out;
+} */
+
+#takePicture {
+  padding-top: 10px;
+  text-align: center;
+  /* width: 100%; */
+}
+
+#canvas {
+  display: none;
 }

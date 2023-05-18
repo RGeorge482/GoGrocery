@@ -168,37 +168,32 @@ function editStorage(item) {
   localStorage.setItem("groceryList", JSON.stringify(groceryItems));
 }
 
-// drag and drop
+
+// drag and drop grocery list functionality
 function stopDefaultEvent(event) {
   event.preventDefault();
   return false;
 }
 
-
 window.ondragover = stopDefaultEvent;
 window.ondrop = stopDefaultEvent;
 
-
-function displayImageInIconSet(filePath) {
+// display the list on the screen
+function displayList(filePath) {
   var images = window.document.querySelectorAll("#icons img");
   for (var i = 0; i < images.length; i++) {
     images[i].src = filePath;
   }
 }
 
-function displayIconsSet() {
-  var iconsArea = window.document.querySelector("#icons");
-  iconsArea.style.display = "block";
-}
-
+// take the list that need to be uploaded
 function interceptDroppedFile() {
   var interceptArea = window.document.querySelector("#load-icon-holder");
   interceptArea.ondrop = function (event) {
     event.preventDefault();
     interceptArea.style.display = "none";
-    displayIconsSet();
     var file = event.dataTransfer.files[0];
-    displayImageInIconSet(file.path);
+    displayList(file.path);
     return false;
   };
 }
@@ -206,3 +201,67 @@ function interceptDroppedFile() {
 window.onload = function () { 
   interceptDroppedFile();
 };
+
+// take picture functionality
+
+// Get the video elemnt from the HTML
+const video = document.getElementById("video");
+
+// Get the canvas element from the HTML file
+const canvas = document.getElementById("canvas");
+
+// Get the "Take Picture" button element from the HTML file
+const takePictureButton = document.getElementById("take-picture");
+
+// Get the "Save Picture" button element from the HTML file
+const savePictureButton = document.getElementById("save-picture");
+
+// check if the browser supports the getUserMedia API
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+  // Request access to the user's webcam
+  navigator.mediaDevices
+    .getUserMedia({ video: true })
+    .then((stream) => {
+      //Set the video element's source to the video stream
+      video.srcObject = stream;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+} else {
+  console.error("getUserMedia is not supported in this browser");
+}
+
+// Add an event listener to the "Take Picture" button
+takePictureButton.addEventListener('click', () => {
+  //Set the canvas dimensions to mach the video dimension
+  canvas.width = video.videoWidth;
+  canvas.height = video.videoHeight;
+
+  // Draw the video frame onto the canvas
+  canvas.getContext('2d').drawImage(video, 0, 0);
+
+  // Create a new image element and set its source to the canvas data URL
+  const img = new Image();
+  img.src = canvas.toDataURL();
+
+  // Append the image element to the document
+  document.body.appendChild(img);
+
+  // Show the "Save Picture" button
+  savePictureButton.style.display = 'block';
+})
+
+// Add am event listener to the "Save Picture" button
+savePictureButton.addEventListener('click', () => {
+  //Convert the canvas to a data URL
+  const dataURL = canvas.toDataURL();
+
+  // Create a new anchor element and set its href attribute to the data URL
+  const link = document.createElement('a');
+  link.href = dataURL;
+
+  // Set the download attribute to "webcam.png" and click the link
+  link.download = 'groceryList.png';
+  link.click();
+})
