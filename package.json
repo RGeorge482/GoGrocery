@@ -4,9 +4,10 @@
   "description": "",
   "main": "main.js",
   "scripts": {
+    "start": "electron main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Gheorghita Rata & Wellington Mariano",
   "license": "ISC",
   "dependencies": {
     "electron": "^5.0.13",

@@ -84,6 +84,7 @@ function createItem(item_name, quantity) {
   list.appendChild(parent);
 }
 
+
 //Download list
 let data = "";
 
