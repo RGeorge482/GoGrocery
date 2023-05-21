@@ -14,6 +14,7 @@ function createWindow() {
   });
   
   // different size window
+  // Final commit
   // mainWindow = new BrowserWindow();
   // mainWindow = new BrowserWindow({minWidth:1200, minHeight:800});
   // mainWindow = new BrowserWindow({minWidth:1200, minHeight:800, maxWidth:2200, maxHeight:1500});
